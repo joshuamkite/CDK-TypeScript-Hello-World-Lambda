@@ -6,7 +6,7 @@
       "es2020",
       "dom"
     ],
-    "declaration": true,
+    "declaration": false, // No .d.ts files needed
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -16,16 +16,16 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": false,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+    "inlineSourceMap": false, // No need for source maps in Lambda
+    "outDir": "./dist/lambda", // Output only to 'dist/lambda'
+    "removeComments": true
   },
+  "include": [
+    "src/index.ts" // Only compile 'src/index.ts'
+  ],
   "exclude": [
     "node_modules",
-    "cdk.out"
+    "cdk.out",
+    "dist" // Prevent re-compilation of 'dist'
   ]
 }
